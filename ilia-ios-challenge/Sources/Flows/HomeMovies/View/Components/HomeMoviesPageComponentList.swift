@@ -43,7 +43,7 @@ struct HomeMoviesPageComponentList: View {
             .navigationTitle("Movies Details")
             .navigationBarColor(backgroundColor: .yellow, titleColor: .red)
         }
-       
+        
     }
 }
 

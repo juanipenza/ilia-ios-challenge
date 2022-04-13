@@ -29,5 +29,4 @@ class MovieMock: MovieResponse {
     required init(from decoder: Decoder) throws {
         fatalError("init(from:) has not been implemented")
     }
-    
 }

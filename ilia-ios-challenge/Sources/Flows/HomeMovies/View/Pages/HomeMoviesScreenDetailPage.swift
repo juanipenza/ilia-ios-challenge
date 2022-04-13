@@ -17,7 +17,7 @@ struct HomeMoviesScreenDetailPage: View {
         VStack(alignment: .leading, spacing: 10) {
             VStack(alignment: .center) {
                 Image("").imageMovie(path: "\(movie.posterPath ?? "")", height: 250, width: 150)
-                .padding(.top, 10)
+                    .padding(.top, 10)
                 
                 Text(movie.title ?? "")
                     .font(IICUIKit.titleFontBold())
@@ -51,26 +51,35 @@ struct HomeMoviesScreenDetailPage: View {
             }
         }
         .onAppear(perform: {
-            isFavorite = false
+            /*
+             @ALTERAÇÃO
+             Chamando se o filme é favorito ou não
+             */
+            isFavorite = favoriteViewModel.isFavoriteMovie(movie: movie)
         })
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Movie Detail")
         .navigationBarColor(backgroundColor: IICUIKit.navigationBarColor, titleColor: IICUIKit.secondaryColor)
-        .navigationBarItems(trailing:
-            Button(action: {
-            if isFavorite {
-                    favoriteViewModel.deleteFavoriteMovie(movie: movie)
-                } else {
-                    favoriteViewModel.deleteFavoriteMovie(movie: movie)
+        /*
+         @ALTERAÇÃO
+         Implementando a adição e remoção de filmes
+         */
+        .navigationBarItems(
+            trailing: Button(
+                action: {
+                    if isFavorite {
+                        favoriteViewModel.deleteFavoriteMovie(movie: movie)
+                    } else {
+                        favoriteViewModel.saveFavoriteMovie(movie: movie)
+                    }
+                    favoriteViewModel.loadFavoriteMovies()
+                    isFavorite.toggle()
                 }
-                favoriteViewModel.loadFavoriteMovies()
-                isFavorite.toggle()
-            }) {
+            ) {
                 Image(systemName: isFavorite ?  "heart.fill" : "heart").imageScale(.large).foregroundColor(.red)
             }
         )
     }
-    
 }
 
 struct HomeMoviesScreenDetailPage_Previews: PreviewProvider {

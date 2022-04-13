@@ -9,7 +9,7 @@ import Foundation
 
 class DatesResponse: Codable {
     let maximum, minimum: String?
-
+    
     init(maximum: String, minimum: String) {
         self.maximum = maximum
         self.minimum = minimum

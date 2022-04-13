@@ -16,14 +16,19 @@ struct FavoriteMoviesComponentListItem: View {
     var body: some View {
         HStack() {
             Image("").imageMovie(path: "\(imagePath)", height: 100, width: 50)
-            .padding(.leading, 15)
+                .padding(.leading, 15)
             VStack(alignment: .leading) {
                 Text(title)
-                .font(IICUIKit.bodyFontBold())
+                    .font(IICUIKit.bodyFontBold())
                 Text(releaseDate)
                     .font(IICUIKit.bodyFont())
                 
             }
+            /*
+             @INSERÇÃO
+             Para ajustar a view de favoritos
+             */
+            Spacer()
         }
         .frame(maxWidth: .infinity, idealHeight: height)
     }

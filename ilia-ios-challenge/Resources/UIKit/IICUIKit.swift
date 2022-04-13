@@ -46,7 +46,5 @@ extension IICUIKit {
     static func posterTitleFontBold() -> Font {
         return regularFontBold(size: 18)
     }
-
-    
 }
 

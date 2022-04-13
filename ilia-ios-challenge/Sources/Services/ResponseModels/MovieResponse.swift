@@ -17,7 +17,7 @@ class MovieResponse: Codable {
     let releaseDate: String?
     let title: String?
     let voteAverage: Double?
-
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case originalLanguage = "original_language"
@@ -28,7 +28,7 @@ class MovieResponse: Codable {
         case title
         case voteAverage = "vote_average"
     }
-
+    
     init(adult: Bool, backdropPath: String, genreIDS: [Int], originalLanguage: String, originalTitle: String, overview: String, popularity: Double, posterPath: String, releaseDate: String, title: String, video: Bool, voteAverage: Double, voteCount: Int) {
         self.adult = adult
         self.originalLanguage = originalLanguage
@@ -39,5 +39,15 @@ class MovieResponse: Codable {
         self.releaseDate = releaseDate
         self.title = title
         self.voteAverage = voteAverage
+    }
+}
+
+/*
+ @INSERÇÃO
+ Adicionado para conseguir deletar/modificar filmes
+ */
+extension MovieResponse: Equatable {
+    static func == (lhs: MovieResponse, rhs: MovieResponse) -> Bool {
+        return lhs.title == rhs.title
     }
 }

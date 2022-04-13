@@ -17,7 +17,7 @@ enum MovieAPI {
 extension MovieAPI: TargetType {
     
     var API_KEY: String {
-            return "0d959db44c2b30eb348d0dc5be5cc1ad"
+        return "0d959db44c2b30eb348d0dc5be5cc1ad"
     }
     
     var baseURL: URL {
@@ -39,7 +39,7 @@ extension MovieAPI: TargetType {
             return .get
         }
     }
-        
+    
     var sampleData: Data {
         switch self {
         case .upcomingMovies:
@@ -55,14 +55,14 @@ extension MovieAPI: TargetType {
     
     var parameters: [String : Any] {
         var parameters = [String:Any]()
-
+        
         switch self {
         case .upcomingMovies(let page):
             parameters["api_key"] = API_KEY
             parameters["language"] = "en-US"
             parameters["page"] = "\(page)"
             return parameters
-         default:
+        default:
             return parameters
         }
     }

@@ -16,7 +16,7 @@ class FavoriteMoviesViewModelTests: XCTestCase {
         let favoritesRepository = FavoritesRepositoryMock(movies: [])
         favoriteMoviesViewModel = FavoriteMoviesViewModel(favoriteMoviesRepository: favoritesRepository)
     }
-
+    
     override func tearDownWithError() throws {
         
     }

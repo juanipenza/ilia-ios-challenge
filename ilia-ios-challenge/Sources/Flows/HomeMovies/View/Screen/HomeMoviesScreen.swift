@@ -14,8 +14,12 @@ struct HomeMoviesScreen: View {
     var body: some View {
         switch viewModel.state {
         case .idle:
+            /*
+             @ALTERAÇÃO
+             Porque vamos carregar filmes async
+             */
             HomeMoviesScreenEmptyPage()
-                .onAppear {
+                .task {
                     await self.viewModel.loadMovies(page: 1)
                 }
         case .loading:

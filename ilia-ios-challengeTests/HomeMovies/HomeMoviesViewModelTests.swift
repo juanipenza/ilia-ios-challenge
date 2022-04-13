@@ -23,9 +23,15 @@ class HomeMoviesViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         
     }
-    
+
     func testLoadMoviesSuccess() async {
         let expectedMoviesCount = 20
+        /*
+         @INSERÇÃO
+         Não tava implementada a tentativa para carregar filmes
+         */
+        moviesRepository.isSuccess = true
+        await homeMoviesViewModel.loadMovies(page: 1)
         
         let moviesCount = homeMoviesViewModel.movies.count
         XCTAssertEqual(expectedMoviesCount, moviesCount)
@@ -33,7 +39,13 @@ class HomeMoviesViewModelTests: XCTestCase {
     
     func testLoadMoviesFailure() async {
         let expectedError = NSError(domain:"", code: 101, userInfo:nil)
-    
+        /*
+         @INSERÇÃO
+         Não tava implementada a tentativa para carregar filmes
+         */
+        moviesRepository.isSuccess = false
+        await homeMoviesViewModel.loadMovies(page: 1)
+
         XCTAssertEqual(homeMoviesViewModel.state, .failed(expectedError))
     }
     
